@@ -13,7 +13,7 @@ export default {
     computed:{
         rowClasses() {
             return[
-                "w-full mx-auto px-6 2xl:px-0",
+                "w-full mx-auto",
                 this.full ? "" : "max-w-screen-xl"
             ]
         }

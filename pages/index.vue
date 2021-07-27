@@ -1,16 +1,17 @@
 <template>
   <a-container>
-        <a-row>
-          <div v-for="type in types" :key="type.id" class="flex">
-            <div>{{type.title}}</div>
-          </div>
-          <button class="btn btn-blue">sadsds</button>
-        </a-row>
+    <a-row>
+      <NuxtLink to="/types">All Types</NuxtLink>
+      <button class="btn btn-blue" @click="increment">
+        increment
+      </button>
+    </a-row>
   </a-container>
 </template>
 
 <script>
-import { ARow, AContainer } from "../components/Layout";
+import { ARow, AContainer } from "~/components/Layout";
+import { mapMutations } from 'vuex'
 export default {
     components:{
         AContainer,
@@ -18,19 +19,12 @@ export default {
     },
     data(){
       return{
-        types: [],
       }
     },
     mounted(){
-      this.fetchSomething();
     },
     methods: {
-      async fetchSomething() {
-        const ip = await this.$axios.$get('http://127.0.0.1:8000/api/v1/types')
-        // this.ip = ip
-        console.log(ip);
-        this.types = ip;
-      }
+      ...mapMutations(['increment']),
     }
 
 }

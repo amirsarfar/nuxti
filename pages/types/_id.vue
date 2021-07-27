@@ -9,12 +9,16 @@
 					<div>{{type.title}}</div>
 				</div>
         <hr>
-				<div v-for="attribute in type.definition" :key="attribute.name" class="flex">
+				<div v-for="attribute in type.definition" :key="attribute.name">
 					<div>{{attribute.name}} ({{attribute.type}})</div>
           <div v-if="attribute.options">
-            
+            <div v-for="(item, index) in attribute.options" :key="index">
+              {{index}} : {{item}}
+            </div>
           </div>
-				</div>
+          <hr>
+        </div>
+        
 			</div>
       <hr>
       <NuxtLink to="/types">All Types</NuxtLink>

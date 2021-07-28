@@ -30,7 +30,7 @@ export default {
   computed: {
     labelClasses() {
       return {
-        "hover-label": this.focused || this.val.trim() != ""
+        // "hover-label": this.focused || this.val.trim() != ""
       };
     },
     inputClasses() {
@@ -58,9 +58,9 @@ export default {
   @apply relative;
   label {
     @apply transform -translate-y-1/2 absolute top-1/2 left-4 transition-all text-gray-800;
-    &.hover-label {
+    // &.hover-label {
       @apply text-gray-400 top-1/4 text-sm;
-    }
+    // }
   }
   input {
     @apply w-full h-12 pl-4 pt-4 text-xl font-normal;

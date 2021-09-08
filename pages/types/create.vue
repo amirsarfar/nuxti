@@ -2,6 +2,7 @@
   <a-container>
 
 		<a-row>
+      <text-input name="key" v-model="key" label="Type Key" class="mt-4"/>
       <text-input name="title" v-model="title" label="Type Title" class="mt-4"/>
 		</a-row>
 
@@ -47,6 +48,7 @@ export default {
     },
     data(){
       return{
+        key: '',
         title: '',
         attributes: [],
         attributeName: '',
@@ -62,7 +64,14 @@ export default {
     },
     methods: {
       async createType() {
-        const ip = await this.$axios.$post('http://127.0.0.1:8000/api/v1/types/', {
+        // console.log({
+        //   key : this.key,
+        //   title : this.title,
+        //   definition: this.attributes
+        // });
+        // return;
+        const ip = await this.$axios.$post(`/types/`, {
+          key : this.key,
           title : this.title,
           definition: this.attributes
         });

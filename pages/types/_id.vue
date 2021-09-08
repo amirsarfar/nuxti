@@ -6,7 +6,7 @@
 			</div>
 			<div v-else>
 				<div>
-					<div>{{type.title}}</div>
+					<div>{{type.key}} - {{type.title}}</div>
 				</div>
         <hr>
 				<div v-for="attribute in type.definition" :key="attribute.name">
@@ -45,9 +45,9 @@ export default {
     methods: {
       async fetchSomething() {
         const id = this.$route.params.id;
-        const ip = await this.$axios.$get('http://127.0.0.1:8000/api/v1/types/' + id);
+        const ip = await this.$axios.$get('/types/' + id);
         console.log(ip);
-        this.type = ip;
+        this.type = ip.type;
         this.isLoading = false;
       }
     }

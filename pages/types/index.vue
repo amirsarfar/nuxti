@@ -6,7 +6,7 @@
 			</div>
 			<div v-else>
 				<div v-for="type in types" :key="type.id" class="flex">
-          <NuxtLink :to="`/types/${type.id}`">{{type.title}}</NuxtLink>
+          <NuxtLink :to="`/types/${type.id}`">{{type.key}} - {{type.title}}</NuxtLink>
 				</div>
 			</div>
       <hr>
@@ -35,10 +35,10 @@ export default {
     },
     methods: {
       async fetchSomething() {
-        const ip = await this.$axios.$get('http://127.0.0.1:8000/api/v1/types');
+        const ip = await this.$axios.$get(`/types/`);
         // this.ip = ip
         console.log(ip);
-        this.types = ip;
+        this.types = ip.types;
         this.isLoading = false;
       }
     }
